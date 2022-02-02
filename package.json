@@ -1,0 +1,23 @@
+{
+  "name": "wowcutegift-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fakt309/wowcutegift-backend.git"
+  },
+  "author": "Vladimir Gaidadei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fakt309/wowcutegift-backend/issues"
+  },
+  "homepage": "https://github.com/fakt309/wowcutegift-backend#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
