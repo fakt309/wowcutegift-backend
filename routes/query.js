@@ -11,7 +11,13 @@ router.post('/', async (req, res) => {
       insidebox: req.body.data.insidebox,
       giftsintobox: req.body.data.giftsintobox,
       package: req.body.data.package,
-      tape: req.body.data.tape
+      tape: req.body.data.tape,
+      demo: req.body.data.demo,
+      preview: {
+        title: "Gift for you",
+        descr: "Look what I have prepared for you",
+        img: "/assets/preview.jpg"
+      }
     }
 
     if (req.body.data.id) {
@@ -33,6 +39,21 @@ router.post('/', async (req, res) => {
     box.id = box._id
     delete box._id
     res.json({success: true, box: box})
+  } else if (req.body.typequery == 'undemo') {
+    let box = await Box.undemo(req.body.id)
+    box.id = box._id
+    delete box._id
+    res.json({success: true, box: box})
+  } else if (req.body.typequery == 'updatepreview') {
+    let d = {
+      preview: {
+        title: req.body.data.title,
+        descr: req.body.data.descr,
+        img: req.body.data.img
+      }
+    }
+    await Box.update(req.body.id, d)
+    res.json({success: true})
   }
 
 })

@@ -10,7 +10,9 @@ const boxSchema = new Schema({
   package: String,
   tape: String,
   createDate: Date,
-  updateDate: Date
+  updateDate: Date,
+  demo: String,
+  preview: Object
 })
 
 const Box = module.exports = mongoose.model('Box', boxSchema)
@@ -39,6 +41,15 @@ module.exports.update = async (id, data) => {
   return new Promise((res, rej) => {
       data.updateDate = Date.now()
       Box.findByIdAndUpdate(id, data, (err, d) => {
+        if (err) rej(err)
+        res(d)
+      })
+    })
+}
+
+module.exports.undemo = async (id) => {
+  return new Promise((res, rej) => {
+      Box.findByIdAndUpdate(id, { demo: "" }, (err, d) => {
         if (err) rej(err)
         res(d)
       })
