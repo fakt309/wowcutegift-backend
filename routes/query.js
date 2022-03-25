@@ -56,6 +56,7 @@ router.post('/', async (req, res) => {
     res.json({success: true})
   }
 
+  //mongoose.disconnect()
 })
 
 module.exports = router

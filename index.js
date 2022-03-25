@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({limit: '16mb', extended: true}))
 
 app.use(express.static(path.join(__dirname, 'dist')))
 
-mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true })
+let db = mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.on('connected', () => {
   // console.log('success db')
 })
