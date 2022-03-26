@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router()
 const Box = require('../models/box')
+const Analytic = require('../models/analytic')
 
 router.post('/', async (req, res) => {
   if (req.body.typequery == 'insert') {
@@ -54,9 +55,12 @@ router.post('/', async (req, res) => {
     }
     await Box.update(req.body.id, d)
     res.json({success: true})
+  } else if (req.body.typequery == 'analyticvisit') {
+    let d = await Analytic.visit(req.body.id, req.body.path, req.body.lang)
+    d = {id: d._id, ...d}
+    delete d._id
+    res.json({success: true, data: d})
   }
-
-  //mongoose.disconnect()
 })
 
 module.exports = router
