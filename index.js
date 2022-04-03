@@ -7,13 +7,13 @@ const config = require('./config/db')
 
 const app = express()
 
-//http connect ------------------
-// const express = require('express');
-// var app = express();
-const http = require('http')
-const server = http.createServer(app)
-server.listen(80)
-//end http connect --------------
+// //http connect ------------------
+// // const express = require('express');
+// // var app = express();
+// const http = require('http')
+// const server = http.createServer(app)
+// server.listen(80)
+// //end http connect --------------
 
 //https connect ------------------
 const https = require('https')
